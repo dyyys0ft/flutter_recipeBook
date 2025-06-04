@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:platzi_project/screens/home_screen.dart';
-import 'package:platzi_project/screens/recipe.dart';
 
 void main() => runApp(const MyApp()); //EJECUTAR LA APP
 
@@ -32,13 +31,10 @@ class RecipeBook extends StatelessWidget {
           backgroundColor: Colors.orange,
           title: Text('Recipe book!', style: TextStyle(color: Colors.white)),
           bottom: TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.home), text: 'Home'),
-              Tab(icon: Icon(Icons.food_bank), text: 'FOOD'),
-            ],
+            tabs: [Tab(icon: Icon(Icons.home), text: 'Home')],
           ),
         ),
-        body: TabBarView(children: [HomeScreen(), Recipe()]),
+        body: TabBarView(children: [HomeScreen()]),
       ),
     );
   }
