@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       context: context,
-      builder: (contexto) => Container(
+      builder: (contexto) => SizedBox(
         width: MediaQuery.of(context).size.width,
         height: 600,
         child: ReciperForm(),
@@ -101,21 +101,15 @@ class ReciperForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
 
     final TextEditingController autor = TextEditingController();
     final TextEditingController recipeName = TextEditingController();
     final TextEditingController picture = TextEditingController();
     final TextEditingController steps = TextEditingController();
-    Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Text(
-        "Add New Recipe",
-        style: TextStyle(color: Colors.deepOrange, fontSize: 20),
-      ),
-    );
+    Padding(padding: const EdgeInsets.all(10.0));
     return Form(
-      key: _formKey,
+      key: formKey,
 
       child: Column(
         mainAxisSize: MainAxisSize
@@ -123,6 +117,12 @@ class ReciperForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Center(
+            child: Text(
+              "  Add New Recipe",
+              style: TextStyle(color: Colors.deepOrange, fontSize: 20),
+            ),
+          ),
           _buildTextField(
             label: "Autor",
             controller: autor,
@@ -166,7 +166,7 @@ class ReciperForm extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              if (_formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate()) {
                 Navigator.pop(context);
               }
             },
